@@ -2,7 +2,7 @@ require 'securerandom'
 require_relative 'lib/player'
 require_relative 'lib/game'
 
-VALID_CHOICES = %w[rock paper scissors].freeze
+VALID_CHOICES = %w[rock paper scissors lizard spock].freeze
 
 
 first_game = Game.new

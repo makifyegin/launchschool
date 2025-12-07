@@ -1,6 +1,14 @@
 class Game
   attr_accessor :winner, :loser
 
+  RULES = {
+    "rock"     => %w[scissors lizard],
+    "paper"    => %w[rock spock],
+    "scissors" => %w[paper lizard],
+    "lizard"   => %w[spock paper],
+    "spock"    => %w[scissors rock]
+  }
+
   def initialize
     @winner = nil
     @loser  = nil
@@ -41,20 +49,25 @@ class Game
     # 3. decide winner (use a rules helper)
 
     @winner = result
-
     if @winner
       @winner.score += 1
-      @loser = (@winner==@human) ? @human : @ai
+      @loser = [@human, @ai].find { |p| p != @winner } if @winner
+      puts "\n"
+      puts "#{@winner.name}:#{@winner.score}"
+      puts "#{@loser.name}:#{@loser.score}"
     end
+
+
     # 4. set @winner and @loser   appropriately
     # 5. update scores
     # 6. display round results
   end
 
+
+
   def decide_winner(human_choice, ai_choice)
-    rules = { "rock" => "scissors", "paper" => "rock", "scissors" => "paper" }
     return nil if human_choice == ai_choice
-    rules[human_choice] == ai_choice ? @human : @ai
+    return RULES[human_choice].include?(ai_choice) ? @human : @ai
   end
 end
 
