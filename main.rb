@@ -8,3 +8,5 @@ VALID_CHOICES = %w[rock paper scissors].freeze
 first_game = Game.new
 first_game.start
 first_game.finish
+
+# Development
