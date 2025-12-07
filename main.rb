@@ -9,4 +9,3 @@ first_game = Game.new
 first_game.start
 first_game.finish
 
-# Development
